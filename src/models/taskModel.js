@@ -31,7 +31,6 @@ const Task = {
   },
 
   async update(id, userId, { title, status, details, dueDate }) {
-    // build dynamic set clause
     const fields = [];
     const values = [];
     let idx = 1;
@@ -45,7 +44,7 @@ const Task = {
       values.push(status);
     }
     if (details !== undefined) {
-      fields.push(`status = $${idx++}`);
+      fields.push(`details = $${idx++}`);
       values.push(details);
     }
     if (dueDate !== undefined) {
