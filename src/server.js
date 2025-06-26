@@ -5,6 +5,7 @@ const authRoutes = require('./routes/authRoutes');
 const taskRoutes = require('./routes/taskRoutes');
 const { authenticateToken } = require('./middleware/authJwt');
 const errorHandler = require('./middleware/errorHandler');
+const cors = require('cors');
 
 const app = express();
 
