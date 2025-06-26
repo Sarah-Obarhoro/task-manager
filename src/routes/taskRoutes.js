@@ -16,6 +16,10 @@ router.post(
     body('status')
       .isIn(statusOptions)
       .withMessage(`Status must be one of: ${statusOptions.join(', ')}`),
+    body('details')
+      .optional()
+      .isString()
+      .withMessage('Details must be a string'),
     body('dueDate')
       .optional()
       .isISO8601()
@@ -44,6 +48,10 @@ router.put(
       .optional()
       .isIn(statusOptions)
       .withMessage(`Status must be one of: ${statusOptions.join(', ')}`),
+    body('details')
+      .optional()
+      .isString()
+      .withMessage('Details must be a string'),
     body('dueDate')
       .optional()
       .isISO8601()

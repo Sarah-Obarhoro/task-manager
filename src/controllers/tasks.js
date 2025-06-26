@@ -15,10 +15,10 @@ exports.createTask = async (req, res, next) => {
        return next(error);
     }
 
-    const { title, status, dueDate } = req.body;
+    const { title, status, details, dueDate } = req.body;
     const userId = req.user.id;
 
-    const newTask = await Task.create({ userId, title, status, dueDate });
+    const newTask = await Task.create({ userId, title, status, details, dueDate });
     res.status(201).json(newTask);
   } catch (err) {
     next(err);
@@ -66,9 +66,9 @@ exports.updateTask = async (req, res, next) => {
 
     const taskId = parseInt(req.params.id, 10);
     const userId = req.user.id;
-    const { title, status, dueDate } = req.body;
+    const { title, status, details, dueDate } = req.body;
 
-    const updated = await Task.update(taskId, userId, { title, status, dueDate });
+    const updated = await Task.update(taskId, userId, { title, status, details, dueDate });
     if (!updated) {
       return res.status(404).json({ message: 'Task not found or no changes' });
     }

@@ -1,12 +1,12 @@
 const db = require('../config/db');
 
 const Task = {
-  async create({ userId, title, status, dueDate }) {
+  async create({ userId, title, status, details, dueDate }) {
     const result = await db.query(
-      `INSERT INTO tasks (user_id, title, status, due_date)
+      `INSERT INTO tasks (user_id, title, status, details, due_date)
        VALUES ($1, $2, $3, $4)
        RETURNING *`,
-      [userId, title, status, dueDate]
+      [userId, title, status, details, dueDate]
     );
     return result.rows[0];
   },
@@ -30,7 +30,7 @@ const Task = {
     return result.rows[0];
   },
 
-  async update(id, userId, { title, status, dueDate }) {
+  async update(id, userId, { title, status, details, dueDate }) {
     // build dynamic set clause
     const fields = [];
     const values = [];
@@ -41,6 +41,10 @@ const Task = {
       values.push(title);
     }
     if (status !== undefined) {
+      fields.push(`status = $${idx++}`);
+      values.push(status);
+    }
+    if (details !== undefined) {
       fields.push(`status = $${idx++}`);
       values.push(status);
     }
