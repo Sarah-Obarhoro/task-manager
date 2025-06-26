@@ -1,12 +1,13 @@
 {
   "scripts": {
-  "dev": "nodemon --exec \"node -r dotenv/config src/server.js\"",
-  "start": "node -r dotenv/config src/server.js",
-  "lint": "eslint . --ext .js",
-  "format": "prettier --write ."
-},
+    "dev": "nodemon --exec \"node -r dotenv/config src/server.js\"",
+    "start": "node -r dotenv/config src/server.js",
+    "lint": "eslint . --ext .js",
+    "format": "prettier --write ."
+  },
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "express-validator": "^7.2.1",
