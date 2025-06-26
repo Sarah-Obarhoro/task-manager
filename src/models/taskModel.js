@@ -4,7 +4,7 @@ const Task = {
   async create({ userId, title, status, details, dueDate }) {
     const result = await db.query(
       `INSERT INTO tasks (user_id, title, status, details, due_date)
-       VALUES ($1, $2, $3, $4)
+       VALUES ($1, $2, $3, $4, $5)
        RETURNING *`,
       [userId, title, status, details, dueDate]
     );
