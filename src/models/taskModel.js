@@ -46,7 +46,7 @@ const Task = {
     }
     if (details !== undefined) {
       fields.push(`status = $${idx++}`);
-      values.push(status);
+      values.push(details);
     }
     if (dueDate !== undefined) {
       fields.push(`due_date = $${idx++}`);
